@@ -5,7 +5,7 @@ import time
 import threading
 from selenium.webdriver.common.keys import Keys
 from pymongo import MongoClient
-client = MongoClient("mongodb+srv://dev1234:dev1234@cluster0.cxldk.mongodb.net/"
+client = MongoClient("mongodb+srv://<username>:<password>@cluster0.cxldk.mongodb.net/"
                      "codes?retryWrites=true&w=majority")
 db = client["moviedb"]
 movies = db["movies"]
@@ -43,5 +43,5 @@ for i in range(1, 150):
     driver.find_element_by_css_selector(
         'html body div#app_mountpoint div main div section.css-vzt30e.e14injhv0 nav.css-sfymjb.e14injhv1 a.css-mr066l').click()
     print("\n\n\n\n")
-    movies.insert_one({"name": nameofthemovie, "age": int(ratingofthemovie), "yearpublished": yearofthemovie,
+    movies.insert_one({"name": nameofthemovie, "age": float(ratingofthemovie), "yearpublished": float(yearofthemovie),
                        "imdbrating": imdbratingofthemovie, "genre": genreofthemovie, "img": imgofthemovie})
